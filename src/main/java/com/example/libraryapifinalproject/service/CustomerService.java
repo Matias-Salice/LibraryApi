@@ -15,22 +15,22 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    // Crear nuevo cliente
+
     public Customer createCustomer(Customer customer) {
         return customerRepository.save(customer);
     }
 
-    // Obtener un cliente por su ID
+
     public Optional<Customer> getCustomerById(Long id) {
         return customerRepository.findById(id);
     }
 
-    // Obtener todos los clientes
+
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
 
-    // Eliminar cliente
+
     public void deleteCustomer(Long id) {
         customerRepository.deleteById(id);
     }
