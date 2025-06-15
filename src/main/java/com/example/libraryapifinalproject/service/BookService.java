@@ -1,9 +1,9 @@
-package service;
+package com.example.libraryapifinalproject.service;
 
-import model.Book;
-import model.Library;
-import repository.BookRepository;
-import repository.LibraryRepository;
+import com.example.libraryapifinalproject.model.Book;
+import com.example.libraryapifinalproject.model.Libraries;
+import com.example.libraryapifinalproject.repository.BookRepository;
+import com.example.libraryapifinalproject.repository.LibraryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,10 +20,10 @@ public class BookService {
     }
 
     public Book addBook(Long libraryId, Book book) {
-        Library library = libraryRepository.findById(libraryId)
+        Libraries libraries = libraryRepository.findById(libraryId)
                 .orElseThrow(() -> new RuntimeException("Library not found with ID: " + libraryId));
 
-        book.setLibrary(library);
+        book.setLibraries(libraries);
         return bookRepository.save(book);
     }
 
@@ -32,9 +32,9 @@ public class BookService {
                 .orElseThrow(() -> new RuntimeException("Book not found with ID: " + bookId));
 
 
-        Library library = book.getLibrary();
-        if (library != null) {
-            library.getBooks().remove(book);
+        Libraries libraries = book.getLibraries();
+        if (libraries != null) {
+            libraries.getBooks().remove(book);
         }
 
         bookRepository.delete(book);

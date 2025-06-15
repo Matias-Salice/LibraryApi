@@ -1,7 +1,7 @@
-package controller;
+package com.example.libraryapifinalproject.controller;
 
-import model.Book;
-import service.BookService;
+import com.example.libraryapifinalproject.model.Book;
+import com.example.libraryapifinalproject.service.BookService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

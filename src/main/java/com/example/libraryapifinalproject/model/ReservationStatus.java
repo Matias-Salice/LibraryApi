@@ -1,5 +1,5 @@
-package model;
+package com.example.libraryapifinalproject.model;
 
 public enum ReservationStatus {
-    PENDING,CONFIRMED,CANCELLED
+    CONFIRMED,CANCELLED
 }

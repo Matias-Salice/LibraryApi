@@ -1,4 +1,4 @@
-package model;
+package com.example.libraryapifinalproject.model;
 
 
 import jakarta.persistence.*;
@@ -22,14 +22,16 @@ public class Reservation {
 
     private String time;
 
-    private Integer peopleCount;
-
     @Enumerated(value = EnumType.STRING)
     private ReservationStatus status;
 
     @ManyToOne
+    @com.fasterxml.jackson.annotation.JsonBackReference("book-reservations")
     private Book book;
 
     @ManyToOne
+    @com.fasterxml.jackson.annotation.JsonBackReference("customer-reservations")
     private Customer customer;
+
+
 }

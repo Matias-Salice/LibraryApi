@@ -1,4 +1,4 @@
-package model;
+package com.example.libraryapifinalproject.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -20,6 +20,7 @@ public class Customer extends User {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @com.fasterxml.jackson.annotation.JsonManagedReference("customer-reservations")
     private List<Reservation> reservations = new ArrayList<>();
 
     public Customer(String username, String password, String phoneNumber) {
@@ -27,13 +28,5 @@ public class Customer extends User {
         this.phoneNumber = phoneNumber;
     }
 
-    public void addBooking(Reservation reservation) {
-        reservations.add(reservation);
-        reservation.setCustomer(this);
-    }
 
-    public void removeBooking(Reservation reservation) {
-        reservations.remove(reservation);
-        reservation.setCustomer(null);
-    }
 }

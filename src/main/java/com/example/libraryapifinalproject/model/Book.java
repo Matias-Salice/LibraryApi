@@ -1,4 +1,4 @@
-package model;
+package com.example.libraryapifinalproject.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,9 +25,11 @@ public class Book {
     private int copiesAvailable;
 
     @ManyToOne
-    private Library library;
+    @com.fasterxml.jackson.annotation.JsonBackReference("libraries-books")
+    private Libraries libraries;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+    @com.fasterxml.jackson.annotation.JsonManagedReference("book-reservations")
     private List<Reservation> reservation = new ArrayList<>();
 
     public Book(String title, String author, String isbn, int copiesAvailable) {

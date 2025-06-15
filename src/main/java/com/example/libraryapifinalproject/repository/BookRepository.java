@@ -1,6 +1,6 @@
-package repository;
+package com.example.libraryapifinalproject.repository;
 
-import model.Book;
+import com.example.libraryapifinalproject.model.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BookRepository extends JpaRepository<Book, Long> {

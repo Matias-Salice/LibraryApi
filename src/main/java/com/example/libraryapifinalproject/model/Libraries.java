@@ -15,27 +15,17 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Library extends User {
+public class Libraries extends User {
     private String address;
 
 
-    @OneToMany(mappedBy = "library", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "libraries", cascade = CascadeType.ALL, orphanRemoval = true)
+    @com.fasterxml.jackson.annotation.JsonManagedReference("libraries-books")
     private List<Book> books = new ArrayList<>();
 
-    public Library(String username, String password, String address) {
+    public Libraries(String username, String password, String address) {
         super(username, password);
         this.address = address;
     }
 
-
-    public void addBook(Book book) {
-        books.add(book);
-        book.setLibrary(this);
-    }
-
-
-    public void removeBook(Book book) {
-        books.remove(book);
-        book.setLibrary(null);
-    }
 }
